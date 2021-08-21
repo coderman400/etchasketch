@@ -21,9 +21,9 @@ for (let i = 0; i < squareSideLength ** 2; i++) {
   item.classList.add("grid-square");
 }
 
-const griditem = document.getElementsByClassName("grid-square");
-for (var i = 0; i < griditem.length; i++) {
-  griditem[i].addEventListener("mouseover", (event) => {
+const gridSquares = document.getElementsByClassName("grid-square");
+for (gridSquare of gridSquares) {
+  gridSquare.addEventListener("mouseover", (event) => {
     console.log("hi");
     event.target.style.setProperty("background", "blue");
   });
