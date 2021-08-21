@@ -3,24 +3,22 @@ const main = document.querySelector("main");
 
 main.appendChild(container);
 container.classList.add("grid-container");
-let noOfSquares = 8;
-frac = 100 / noOfSquares;
+let squareSideLength = 8;
+frac = 100 / squareSideLength;
 container.style.setProperty(
   "grid-template-columns",
-  `repeat(${noOfSquares},${frac}%)`
+  `repeat(${squareSideLength},${frac}%)`
 );
 container.style.setProperty(
   "grid-template-rows",
-  `repeat(${noOfSquares},${frac}%)`
+  `repeat(${squareSideLength},${frac}%)`
 );
-let counter = 1;
 
 let item;
-while (counter < noOfSquares ** 2 + 1) {
+for (let i = 0; i < squareSideLength ** 2; i++) {
   item = document.createElement("div");
   container.appendChild(item);
   item.classList.add("grid-square");
-  counter++;
 }
 
 const griditem = document.getElementsByClassName("grid-square");
