@@ -14,7 +14,7 @@ rightmenu.classList.add("rightmenu")
 slider.type = "range";
 slider.classList.add("slider");
 slider.min="1";
-slider.max="25";
+slider.max="50";
 slider.value="8";
 
 
@@ -28,6 +28,16 @@ rightmenu.appendChild(value);
 while(container.firstChild){
     container.removeChild(container.firstChild);
 }
+
+
+
+let colorwheel = document.getElementsByClassName('colorwheel');
+colorChosen=colorwheel[0].value;
+
+colorwheel[0].addEventListener('change',(event)=>{
+    colorChosen=colorwheel[0].value;
+})
+
 
 
 //make an initial grid=================================
@@ -48,13 +58,20 @@ let counter=1;
 value.textContent=`${noOfSquares}x${noOfSquares}`;
 //initial grid made =================================
 
+const checkHover = document.querySelector("#switch")
+console.log(checkHover);
 
+checkHover.addEventListener('input',()=>{
+    isHover=checkHover.checked;
+    console.log(checkHover.checked)
+})
 
 //==============CREATE A GRID WHENEVER SLIDER VALUE IS ADJUSTED=================================
 
 
 
 slider.oninput = function() {
+    
     console.log("EYY BREAD")
     noOfSquares = this.value;
     //display dimensions
@@ -83,20 +100,30 @@ slider.oninput = function() {
 
     //on hovering, we change the color of the griditem
 const griditem = document.getElementsByClassName('griditem');
+
+
 for (var i = 0 ; i < griditem.length; i++) {
+    
     griditem[i].addEventListener('mouseover',(event)=>{
+        if(isHover==true){
         console.log('hi')
-        event.target.style.setProperty('background','blue');
+        event.target.style.setProperty('background',colorChosen);
+        console.log(colorChosen);
+        }
     })
  }
 }
+const griditem = document.getElementsByClassName('griditem');
 
 //on hovering, we change the color of the griditem
-const griditem = document.getElementsByClassName('griditem');
+
 for (var i = 0 ; i < griditem.length; i++) {
     griditem[i].addEventListener('mouseover',(event)=>{
+        if(isHover==true){
         console.log('hi')
-        event.target.style.setProperty('background','blue');
+        event.target.style.setProperty('background',colorChosen);
+        console.log(colorChosen);
+        }
     })
  }
 
